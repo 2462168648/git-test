@@ -18,7 +18,7 @@ public class RedisIdWorker {
      */
     private static final int COUNT_BITS = 32;
 
-    private StringRedisTemplate stringRedisTemplate;
+    private final StringRedisTemplate stringRedisTemplate;
 
     public RedisIdWorker(StringRedisTemplate stringRedisTemplate) {
         this.stringRedisTemplate = stringRedisTemplate;
@@ -26,7 +26,7 @@ public class RedisIdWorker {
 
     public long nextId(String keyPrefix) {
         if (keyPrefix == null) {
-            keyPrefix = "";
+            keyPrefix = "default";
         }
         // 1.生成时间戳
         LocalDateTime now = LocalDateTime.now();
